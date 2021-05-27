@@ -1,44 +1,44 @@
 //Array que contem todas as perguntas em objeto com seus parametros
 let perguntas = [
     {   titulo:'Pergunta 1', pergunta:'Tag em html para usar css externo: ', 
-        respostas:{r1:'< a >', r2:'< link >', r3:'< button >', r4:'< input >'},
-        respostaCerta: 2
+        respostas:['< a >', '< link >', '< button >', '< input >'],
+        respostaCerta: ['resposta errada', 'resposta certa', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 2', pergunta:'Parametro do css para tornar uma pagina responsiva: ', 
-        respostas:{r1:'@media', r2:'@font', r3:'@import', r4:'@export'},
-        respostaCerta: 1
+        respostas:['@media', '@font', '@import', '@export'],
+        respostaCerta: ['resposta certa', 'resposta errada', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 3', pergunta:'Conhecido como esqueleto de uma webpage: ', 
-        respostas:{r1:'javascript', r2:'css', r3:'php', r4:'html'},
-        respostaCerta: 4
+        respostas:['javascript', 'css', 'php', 'html'],
+        respostaCerta: ['resposta errada', 'resposta errada', 'resposta errada', 'resposta certa' ]
     },
     {   titulo:'Pergunta 4', pergunta:'Conhecido como a arte do site: ', 
-        respostas:{r1:'css', r2:'photoshop', r3:'gimp', r4:'html'},
-        respostaCerta: 1
+        respostas:['css', 'photoshop', 'gimp', 'html'],
+        respostaCerta: ['resposta certa', 'resposta errada', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 5', pergunta:'Tag para paragrafo em html: ', 
-        respostas:{r1:'< paragrafo >', r2:'< b >', r3:'< p >', r4:'< pr >'},
-        respostaCerta: 3
+        respostas:['< paragrafo >', '< b >', '< p >', '< pr >'],
+        respostaCerta: ['resposta errada', 'resposta errada', 'resposta certa', 'resposta errada' ]
     },
     {   titulo:'Pergunta 6', pergunta:'Tag para imagen em html: ', 
-        respostas:{r1:'< src >', r2:'< img >', r3:'< type >', r4:'< image >'},
-        respostaCerta: 2
+        respostas:['< src >', '< img >', '< type >', '< image >'],
+        respostaCerta: ['resposta errada', 'resposta certa', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 7', pergunta:'Tag para tabelas em html:', 
-        respostas:{r1:'< col >', r2:'< row >', r3:'< column >', r4:'< table >'},
-        respostaCerta: 4
+        respostas:['< col >', '< row >', '< column >', '< table >'],
+        respostaCerta: ['resposta errada', 'resposta errada', 'resposta errada', 'resposta certa' ]
     },
     {   titulo:'Pergunta 8', pergunta:'Parametro css para borda:', 
-        respostas:{r1:'borda', r2:'border', r3:'bd', r4:'#borda'},
-        respostaCerta: 2
+        respostas:['borda', 'border', 'bd', '#borda'],
+        respostaCerta: ['resposta errada', 'resposta certa', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 9', pergunta:'Sinal ultilizado para identificar classes no css:', 
-        respostas:{r1:'.classe', r2:'#classe', r3:'classe', r4:'$classe'},
-        respostaCerta: 1
+        respostas:['.classe', '#classe', 'classe', '$classe'],
+        respostaCerta: ['resposta certa', 'resposta errada', 'resposta errada', 'resposta errada' ]
     },
     {   titulo:'Pergunta 10', pergunta:'Sinal ultilizado para identificar ids no css:', 
-        respostas:{r1:'.classe', r2:'classe', r3:'#classe', r4:'$classe'},
-        respostaCerta: 3
+        respostas:['.classe', 'classe', '#classe', '$classe'],
+        respostaCerta: ['resposta errada', 'resposta errada', 'resposta certa', 'resposta errada' ]
     },
     {   titulo:'Resultado', 
         resultado:'<img src="assets/img/congratulations.png"> <br>Parabens, voce concluiu todo o quiz. <br><br> Seu resultado é:'
@@ -47,16 +47,21 @@ let perguntas = [
 
 //variavel contagem de itens do array perguntas
 let x= 0;
+//variavel contagem de pontos
 let pontos = 0;
+
 //açoes necessarias ao apertar o menu iniciar
 function apertouIniciar(){
     document.getElementById('reset').style.display = 'none';
     document.getElementById('tituloPergunta').innerHTML = perguntas[x].titulo;
     document.querySelector('.pergunta').innerHTML = perguntas[x].pergunta;
-    document.getElementById('r1').innerHTML = perguntas[x].respostas.r1;
-    document.getElementById('r2').innerHTML = perguntas[x].respostas.r2;            
-    document.getElementById('r3').innerHTML = perguntas[x].respostas.r3;
-    document.getElementById('r4').innerHTML = perguntas[x].respostas.r4; 
+    document.querySelector('.pergunta').innerHTML = perguntas[x].pergunta;
+    document.getElementById('r1').innerHTML = perguntas[x].respostas[0];
+    document.getElementById('r2').innerHTML = perguntas[x].respostas[1];            
+    document.getElementById('r3').innerHTML = perguntas[x].respostas[2];
+    document.getElementById('r4').innerHTML = perguntas[x].respostas[3]; 
+    tornarAleatorio();
+    corResposta();
 }
 
 //açoes necessarias ao apertar o botao next
@@ -67,11 +72,18 @@ function apertouNext(){
         x++;
         console.log(x);
         document.getElementById('tituloPergunta').innerHTML = perguntas[x].titulo;
+        document.querySelector('.pergunta').innerHTML = perguntas[x].pergunta;           
         document.querySelector('.pergunta').innerHTML = perguntas[x].pergunta;
-        document.getElementById('r1').innerHTML = perguntas[x].respostas.r1;
-        document.getElementById('r2').innerHTML = perguntas[x].respostas.r2;            
-        document.getElementById('r3').innerHTML = perguntas[x].respostas.r3;
-        document.getElementById('r4').innerHTML = perguntas[x].respostas.r4;            
+        document.getElementById('r1').innerHTML = perguntas[x].respostas[0];
+        document.getElementById('r2').innerHTML = perguntas[x].respostas[1];            
+        document.getElementById('r3').innerHTML = perguntas[x].respostas[2];
+        document.getElementById('r4').innerHTML = perguntas[x].respostas[3];
+        document.getElementById('rc1').style.display = 'none';
+        document.getElementById('rc2').style.display = 'none';
+        document.getElementById('rc3').style.display = 'none';
+        document.getElementById('rc4').style.display = 'none'; 
+        tornarAleatorio();
+        corResposta();
         document.getElementById('next').classList.add('disabled');
     }
     document.getElementById('ok').classList.add('disabled');
@@ -85,63 +97,14 @@ function apertouNext(){
 function apertouOk(){
     document.getElementById('ok').disabled = true;
     document.getElementById('next').classList.remove('disabled');
-    function latencia (){
-        let radios = document.getElementsByName('flexRadioDefault');
-        let numRadio;
-        if(radios[0].checked == true){
-            numRadio = 1;
-            if(numRadio == perguntas[x].respostaCerta){
-            document.getElementById('respostacerta').innerHTML = "resposta certa";
-            limpar();
-            document.getElementById('respostacerta').classList.add('bg-success', 'pd-1');
-            pontos = pontos + 1; 
-            document.getElementById('pontos').innerHTML = pontos; 
-            }else{
-                document.getElementById('respostacerta').innerHTML = "resposta errada";
-                document.getElementById('respostacerta').classList.add('bg-danger', 'pd-1');
-            } 
-        } 
-        else if(radios[1].checked == true){
-            numRadio = 2;
-            if(numRadio == perguntas[x].respostaCerta){
-                document.getElementById('respostacerta').innerHTML = "resposta certa";
-                limpar();
-                document.getElementById('respostacerta').classList.add('bg-success', 'pd-1');
-                pontos=pontos+1;
-                document.getElementById('pontos').innerHTML = pontos; 
-                }else{
-                    document.getElementById('respostacerta').innerHTML = "resposta errada";
-                    document.getElementById('respostacerta').classList.add('bg-danger', 'pd-1');
-                } 
-        }
-        else if(radios[2].checked == true){
-            numRadio = 3;
-            if(numRadio == perguntas[x].respostaCerta){
-                document.getElementById('respostacerta').innerHTML = "resposta certa";
-                limpar();
-                document.getElementById('respostacerta').classList.add('bg-success', 'pd-1');
-                pontos = pontos + 1;
-                document.getElementById('pontos').innerHTML = pontos; 
-                }else{
-                    document.getElementById('respostacerta').innerHTML = "resposta errada";
-                    document.getElementById('respostacerta').classList.add('bg-danger', 'pd-1');
-                } 
-        }
-        else if(radios[3].checked == true){
-            numRadio = 4;
-            if(numRadio == perguntas[x].respostaCerta){
-                document.getElementById('respostacerta').innerHTML = "resposta certa";
-                limpar();
-                document.getElementById('respostacerta').classList.add('bg-success', 'pd-1');
-                pontos = pontos+1;
-                document.getElementById('pontos').innerHTML = pontos; 
-                }else{
-                    document.getElementById('respostacerta').innerHTML = "resposta errada";
-                    document.getElementById('respostacerta').classList.add('bg-danger', 'pd-1');
-                } 
-        }
-    }
+    document.getElementById('rc1').style.display = 'inline';
+    document.getElementById('rc2').style.display = 'inline';
+    document.getElementById('rc3').style.display = 'inline';
+    document.getElementById('rc4').style.display = 'inline';
+    latencia();
     setTimeout(latencia, 100);
+    limpar();
+    document.getElementById('pontos').innerHTML = pontos;
 }
 
 //acoes necesserias ao escolher uma resposta
@@ -150,10 +113,17 @@ function apertouEscolha(){
     document.getElementById('ok').disabled = false;
 
 }
+
+//açoes necessarias para limpar classes desnecessarias
 function limpar(){
-    document.getElementById('respostacerta').classList.remove('bg-success', 'pd-1');
-    document.getElementById('respostacerta').classList.remove('bg-danger', 'pd-1');
+    let radios = document.getElementsByName('flexRadioDefault');
+    radios[0].classList.remove('respostacerta', 'respostaerrada');
+    radios[1].classList.remove('respostacerta', 'respostaerrada');
+    radios[2].classList.remove('respostacerta', 'respostaerrada');
+    radios[3].classList.remove('respostacerta', 'respostaerrada');
 }
+
+// exibição do resultado do quiz
 function resultado(){
     document.getElementById('tituloPergunta').innerHTML = perguntas[10].titulo;
     document.querySelector('.modal-body').innerHTML = `${perguntas[10].resultado} ${pontos} pontos`;
@@ -163,4 +133,82 @@ function resultado(){
     document.getElementById('next').style.display = 'none';
     document.getElementById('modal-footer').classList.remove('justify-content-between');
     document.getElementById('descPontos').style.display ='none';
+}
+
+//função necessaria para a aletoriedade do codigo
+function tornarAleatorio(){
+  const maxNumbers = 4;
+  let randomNumber;
+  let tmp;
+  let list = [];
+  let radios = document.getElementsByName('flexRadioDefault');
+  for(let i = 0; i< maxNumbers; i++){
+      list[i] = i + 1;
+  }
+  for (let i = list.length; i;){
+      randomNumber =  Math.random() * i-- | 0;
+      tmp = list[randomNumber];
+      list[randomNumber] = list[i];
+      list[i] = tmp;
+  }
+document.getElementById('r'+list[0]).innerHTML=perguntas[x].respostas[0];
+document.getElementById('r'+list[1]).innerHTML=perguntas[x].respostas[1];
+document.getElementById('r'+list[2]).innerHTML=perguntas[x].respostas[2];
+document.getElementById('r'+list[3]).innerHTML=perguntas[x].respostas[3];
+document.getElementById('rc'+list[0]).innerHTML=perguntas[x].respostaCerta[0];
+document.getElementById('rc'+list[1]).innerHTML=perguntas[x].respostaCerta[1];
+document.getElementById('rc'+list[2]).innerHTML=perguntas[x].respostaCerta[2];
+document.getElementById('rc'+list[3]).innerHTML=perguntas[x].respostaCerta[3];
+let lista =[];
+var rcerta=[perguntas[x].respostaCerta[0].replace(" ", ""),perguntas[x].respostaCerta[1].replace(" ", ""),perguntas[x].respostaCerta[2].replace(" ",""),perguntas[x].respostaCerta[3].replace(" ","")];
+lista = list.map(
+    function(item){
+        return item - 1 ;
+    }
+);
+radios[lista[0]].classList.add(rcerta[0]);
+radios[lista[1]].classList.add(rcerta[1]);
+radios[lista[2]].classList.add(rcerta[2]);
+radios[lista[3]].classList.add(rcerta[3]);
+}
+
+// funcao que avalia se a resposta e certa ou errada para a contagem de pontos
+function latencia(){
+    let radios = document.getElementsByName('flexRadioDefault');
+    if((radios[0].checked == true) && (radios[0].classList.contains('respostacerta'))){
+        pontos= pontos + 1;
+    }
+    else
+    if((radios[1].checked == true) && (radios[1].classList.contains('respostacerta'))){
+        pontos = pontos+1;
+    }
+    else
+    if((radios[2].checked == true) && (radios[2].classList.contains('respostacerta'))){
+        pontos = pontos + 1;
+    }
+    else
+    if((radios[3].checked == true) && (radios[3].classList.contains('respostacerta'))){
+        pontos = pontos + 1;
+    }
+}
+function corResposta(){
+    (document.getElementById('rc1').innerHTML == 'resposta certa')? 
+    (document.getElementById('rc1').classList.add('bg-success'), document.getElementById('rc1').classList.remove('bg-danger')):
+    (document.getElementById('rc1').classList.add('bg-danger'), document.getElementById('rc1').classList.remove('bg-success'));
+    
+    (document.getElementById('rc2').innerHTML == 'resposta certa')? 
+    (document.getElementById('rc2').classList.add('bg-success'), document.getElementById('rc2').classList.remove('bg-danger')):
+    (document.getElementById('rc2').classList.add('bg-danger'), document.getElementById('rc2').classList.remove('bg-success'));
+    
+    (document.getElementById('rc3').innerHTML == 'resposta certa')? 
+    (document.getElementById('rc3').classList.add('bg-success'), document.getElementById('rc3').classList.remove('bg-danger')):
+    (document.getElementById('rc3').classList.add('bg-danger'), document.getElementById('rc3').classList.remove('bg-success'));
+
+    (document.getElementById('rc4').innerHTML == 'resposta certa')? 
+    (document.getElementById('rc4').classList.add('bg-success'), document.getElementById('rc4').classList.remove('bg-danger')):
+    (document.getElementById('rc4').classList.add('bg-danger'), document.getElementById('rc4').classList.remove('bg-success'));
+}
+
+function resetar(){
+    location.reload();
 }

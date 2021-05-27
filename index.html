@@ -27,26 +27,26 @@
                     <div class="resposta">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> 
-                            <label class="form-check-label" for="flexRadioDefault1" onmousedown="apertouEscolha()">
-                                <span id="r1">resposta1</span>
+                            <label class="form-check-label d-flex justify-content-between" for="flexRadioDefault1" onmousedown="apertouEscolha()">
+                                <div id="r1">resposta1</div> <div id="rc1" class="mr-2">reposta2</div>
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> 
-                            <label class="form-check-label" for="flexRadioDefault2" onmousedown="apertouEscolha()">
-                                <span id="r2">resposta1</span>
+                            <label class="form-check-label d-flex justify-content-between" for="flexRadioDefault2" onmousedown="apertouEscolha()">
+                                <div id="r2">resposta1 </div><div id="rc2" class="mr-2">resposta2</div>
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"> 
-                            <label class="form-check-label" for="flexRadioDefault3" onmousedown="apertouEscolha()">
-                                <span id="r3">resposta1</span>
+                            <label class="form-check-label d-flex justify-content-between" for="flexRadioDefault3" onmousedown="apertouEscolha()">
+                                <div id="r3">resposta1</div><div id="rc3" class="mr-2">resposta2</div>
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"> 
-                            <label class="form-check-label" for="flexRadioDefault4" onmousedown="apertouEscolha()">
-                                <span id="r4">resposta1</span>
+                            <label class="form-check-label d-flex justify-content-between" for="flexRadioDefault4" onmousedown="apertouEscolha()">
+                                <div id="r4">resposta1</div><div id="rc4" class="mr-2">resposta2</div>
                             </label>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                 <button type="button" class="btn btn-primary disabled" onclick="apertouOk()" id="ok" disabled>ok</button>
                 <span id='respostacerta'></span>
                 <button type="button" class="btn btn-outline-primary disabled" onclick="apertouNext()" id="next">Next</button>
-                <button type="button" class="btn btn-primary btn-block" onclick="apertouOk()" id="reset">reset</button>
+                <button type="button" class="btn btn-primary btn-block" onclick="resetar()" id="reset">reset</button>
                 </div>
             </div>
         </div>
